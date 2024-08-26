@@ -7,7 +7,7 @@ const userRouter = express.Router()
 
 userRouter.route("/register").post(upload.single("profilePicture"), register)
 userRouter.route("/login").post(login);
-userRouter.route("/loign/verifylogin").get(isAuthenticated,verifyAutoLogin);
+userRouter.route("/login/verifylogin").get(isAuthenticated,verifyAutoLogin);
 userRouter.route("/logout").post(isAuthenticated, logout)
 userRouter.route("/profile/update").post(isAuthenticated, upload.single("resume"), updateProfile)
 
