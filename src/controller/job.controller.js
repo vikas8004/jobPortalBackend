@@ -24,7 +24,9 @@ const postJob = async (req, res, next) => {
 // getting the jobs
 const getAllJobs = async (req, res, next) => {
     try {
-        const keyword = req.query.keyword || ""
+        const keyword = req.query.keyword || "";
+     
+        
         const query = {
             $or: [
                 { title: { $regex: keyword, $options: "i" } },
