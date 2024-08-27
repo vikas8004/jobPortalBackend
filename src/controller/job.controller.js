@@ -25,8 +25,8 @@ const postJob = async (req, res, next) => {
 const getAllJobs = async (req, res, next) => {
     try {
         const keyword = req.query.keyword || "";
-     
-        
+
+
         const query = {
             $or: [
                 { title: { $regex: keyword, $options: "i" } },
@@ -50,7 +50,7 @@ const getJobById = async (req, res, next) => {
         const jobId = req.params.id;
         const job = await Job.findById(jobId).populate({
             path: "applications"
-        })
+        }).populate("companyId");
         if (!job) {
             return res.status(404).json(CustomError("no job found"))
         }
